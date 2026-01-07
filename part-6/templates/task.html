@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Task Details{% endblock %}
+
+{% block content %}
+<div class="card">
+{% if task %}
+    <h2>{{ task.title }}</h2>
+    <p><strong>Status:</strong> {{ task.status }}</p>
+    <p><strong>Priority:</strong> {{ task.priority }}</p>
+{% else %}
+    <p>Task not found.</p>
+{% endif %}
+</div>
+{% endblock %}

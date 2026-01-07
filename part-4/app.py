@@ -8,6 +8,7 @@ How to Run:
 """
 
 from flask import Flask, render_template, url_for
+from flask import request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -55,6 +56,43 @@ def show_links():
     }
     return render_template('links.html', links=links)
 
+@app.route('/products')
+def products():
+    products = {
+        1: {'name': 'Laptop', 'price': 75000},
+        2: {'name': 'Smartphone', 'price': 35000},
+        3: {'name': 'Headphones', 'price': 5000},
+    }
+    return render_template('products.html', products=products)
+
+@app.route('/category/<category_name>/product/<int:product_id>')
+def category_product(category_name, product_id):
+    products = {
+        1: {'name': 'Laptop', 'price': 75000},
+        2: {'name': 'Smartphone', 'price': 35000},
+        3: {'name': 'Headphones', 'price': 5000},
+    }
+
+    product = products.get(product_id)
+
+    return render_template(
+        'category_product.html',
+        category=category_name,
+        product_id=product_id,
+        product=product
+    )
+
+@app.route('/search/<query>')
+def search(query):
+    return render_template('search.html', query=query)
+
+@app.route('/search')
+def search_redirect():
+    query = request.args.get('q')
+    return redirect(url_for('search', query=query))
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
@@ -76,16 +114,16 @@ if __name__ == '__main__':
 # EXERCISES:
 # =============================================================================
 #
-# Exercise 4.1: Create a product page
+# Exercise 4.1: Create a product page                                               #done
 #   - Add route /product/<int:product_id>
 #   - Create a products dictionary with id, name, price
 #   - Display product details or "Not Found" message
 #
-# Exercise 4.2: Category and product route
+# Exercise 4.2: Category and product route                                          #done
 #   - Add route /category/<category_name>/product/<int:product_id>
 #   - Display both the category and product information
 #
-# Exercise 4.3: Search route
+# Exercise 4.3: Search route                                                        #done
 #   - Add route /search/<query>
 #   - Display "Search results for: [query]"
 #   - Bonus: Add a simple search form that redirects to this route

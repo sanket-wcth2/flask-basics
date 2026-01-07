@@ -18,12 +18,12 @@ app = Flask(__name__)
 # =============================================================================
 
 PERSONAL_INFO = {
-    'name': 'Your Name',
+    'name': 'Sanket Kardak',
     'title': 'Web Developer',
     'bio': 'A passionate developer learning Flask and web development.',
-    'email': 'your.email@example.com',
-    'github': 'https://github.com/yourusername',
-    'linkedin': 'https://linkedin.com/in/yourusername',
+    'email': 'sanketwcth2@gmail.com',
+    'github': 'https://github.com/sanket-wcth2',
+    'linkedin': 'https://linkedin.com/in/sanketkardak7',
 }
 
 SKILLS = [
@@ -35,7 +35,7 @@ SKILLS = [
 ]
 
 PROJECTS = [
-    {'id': 1, 'name': 'Personal Website', 'description': 'A Flask-powered personal portfolio website.', 'tech': ['Python', 'Flask', 'HTML', 'CSS'], 'status': 'Completed'},
+    {'id': 1, 'name': 'Personal Website', 'description': 'A creative bootstrap website.', 'tech': ['Bootstrap', 'Javascript', 'HTML', 'CSS'], 'status': 'Completed'},
     {'id': 2, 'name': 'Todo App', 'description': 'A simple task management application.', 'tech': ['Python', 'Flask', 'SQLite'], 'status': 'In Progress'},
     {'id': 3, 'name': 'Weather Dashboard', 'description': 'Display weather data from an API.', 'tech': ['Python', 'Flask', 'API'], 'status': 'Planned'},
 ]
@@ -44,6 +44,20 @@ PROJECTS = [
 # =============================================================================
 # ROUTES
 # =============================================================================
+BLOG_POSTS = [
+    {
+        'id': 1,
+        'title': 'Why I Started Learning Flask',
+        'content': 'Flask is lightweight and beginner-friendly...',
+        'author': 'Sanket Kardak'
+    },
+    {
+        'id': 2,
+        'title': 'My First Flask Project',
+        'content': 'Building this website helped me understand routing...',
+        'author': 'Sanket Kardak'
+    }
+]
 
 @app.route('/')
 def home():
@@ -74,6 +88,28 @@ def project_detail(project_id):
 def contact():
     return render_template('contact.html', info=PERSONAL_INFO)
 
+@app.route('/blog')
+def blog():
+    return render_template(
+        'blog.html',
+        info=PERSONAL_INFO,
+        posts=BLOG_POSTS
+    )
+
+@app.route('/skill/<skill_name>')
+def skill_detail(skill_name):
+    filtered_projects = []
+
+    for project in PROJECTS:
+        if skill_name in project['tech']:
+            filtered_projects.append(project)
+
+    return render_template(
+        'skill.html',
+        info=PERSONAL_INFO,
+        skill=skill_name,
+        projects=filtered_projects
+    )
 
 if __name__ == '__main__':
     app.run(debug=True)
@@ -101,21 +137,21 @@ if __name__ == '__main__':
 # EXERCISES:
 # =============================================================================
 #
-# Exercise 5.1: Personalize your website
+# Exercise 5.1: Personalize your website                   #done
 #   - Update PERSONAL_INFO with your real information
 #   - Add your actual skills and projects
 #
-# Exercise 5.2: Add a new page
+# Exercise 5.2: Add a new page                             #done
 #   - Create a /blog route
 #   - Add blog posts data structure
 #   - Create blog.html template
 #
-# Exercise 5.3: Enhance the styling
+# Exercise 5.3: Enhance the styling                        #done
 #   - Modify static/style.css
 #   - Add your own color scheme
 #   - Make it responsive for mobile
 #
-# Exercise 5.4: Add more dynamic features
+# Exercise 5.4: Add more dynamic features                  #done
 #   - Create a /skill/<skill_name> route
 #   - Show projects that use that skill
 #

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>All Tasks</h2>
+
+<div class="card">
+    <ul class="task-list">
+        {% for task in tasks %}
+        <li class="task-item">
+            <a href="{{ url_for('task_detail', id=task.id) }}">
+                {{ task.title | upper }}
+            </a>
+            <span class="badge {{ task.status|lower|replace(' ', '-') }}">
+                {{ task.status }}
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

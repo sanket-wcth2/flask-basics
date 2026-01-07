@@ -9,7 +9,7 @@ How to Run:
 3. Open browser: http://localhost:5000
 """
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -20,7 +20,35 @@ TASKS = [
     {'id': 3, 'title': 'Push to GitHub', 'status': 'Pending', 'priority': 'Low'},
 ]
 
-# Your code here...
+@app.route('/')
+def index():
+    return render_template('index.html', tasks=TASKS)
+
+
+@app.route('/add', methods=['GET', 'POST'])
+def add_task():
+    if request.method == 'POST':
+        new_task = {
+            'id': len(TASKS) + 1,
+            'title': request.form['title'],
+            'status': request.form['status'],
+            'priority': request.form['priority']
+        }
+        TASKS.append(new_task)
+        return redirect(url_for('index'))
+
+    return render_template('add.html')
+
+
+@app.route('/task/<int:id>')
+def task_detail(id):
+    task = next((t for t in TASKS if t['id'] == id), None)
+    return render_template('task.html', task=task)
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 
 if __name__ == '__main__':

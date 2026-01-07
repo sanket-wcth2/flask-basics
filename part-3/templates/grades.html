@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grades</title>
+
+    <!-- 🔹 Inline CSS (no external stylesheet) -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Navbar styling */
+        nav {
+            background-color: #eef2f7;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: #555;
+        }
+
+        /* Card style (same feel as other pages) */
+        .card {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9fbff;
+            border-radius: 10px;
+        }
+
+        /* Grades table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e6efff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f6ff;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/profile">Profile</a>
+        <a href="/skills">Skills</a>
+        <a href="/grades">Grades</a>
+    </nav>
+
+    <h1>Student Grades</h1>
+    <p>This page demonstratesyanestR demonstrates passing a dictionary and looping in Jinja2.</p>
+
+    <div class="card">
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Grade</th>
+            </tr>
+
+            {% for subject, grade in grades.items() %}
+            <tr>
+                <td>{{ subject }}</td>
+                <td>{{ grade }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -21,6 +21,10 @@ def home():
 def about():
     return render_template('about.html')  # Renders templates/about.html
 
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
@@ -42,16 +46,16 @@ if __name__ == '__main__':
 # EXERCISES:
 # =============================================================================
 #
-# Exercise 2.1: Modify the templates
+# Exercise 2.1: Modify the templates                                           #done
 #   - Edit index.html and add more content
 #   - Refresh browser to see changes
 #
-# Exercise 2.2: Create a new page
+# Exercise 2.2: Create a new page                                              #done
 #   - Create templates/contact.html
 #   - Add a new route @app.route('/contact')
 #   - Return render_template('contact.html')
 #
-# Exercise 2.3: Add navigation
+# Exercise 2.3: Add navigation                                                 #done
 #   - Add <a href="/"> and <a href="/about"> links to both pages
 #   - Test clicking between pages
 #
