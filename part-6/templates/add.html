@@ -8,7 +8,7 @@
 <div class="card">
     <form method="POST" class="form">
         <label>Title</label>
-        <input type="text" name="title" required>
+        <input type="text" name="title" required placeholder="Enter task title">
 
         <label>Status</label>
         <select name="status">
@@ -24,7 +24,12 @@
             <option>Low</option>
         </select>
 
-        <button type="submit" class="btn">Add Task</button>
+        <label>Due Date (Optional)</label>
+        <input type="date" name="due_date">
+
+        <button type="submit" class="btn">
+            <i class="fas fa-plus"></i> Add Task
+        </button>
     </form>
 </div>
 {% endblock %}

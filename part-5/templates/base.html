@@ -43,31 +43,3 @@
     {% block extra_js %}{% endblock %}
 </body>
 </html>
-
-{#
-=============================================================================
-TEMPLATE INHERITANCE EXPLAINED
-=============================================================================
-
-This is a BASE TEMPLATE. Other templates "extend" this one.
-
-Key Jinja2 blocks:
-- block title -> Page title
-- block content -> Main page content
-- block extra_css -> Additional CSS (optional)
-- block extra_js -> Additional JS (optional)
-
-Child templates use:
-extends "base.html"
-block content
-    <h1>My Page Content</h1>
-endblock
-
-Benefits:
-1. DRY (Don't Repeat Yourself) - navbar/footer defined once
-2. Consistent layout across all pages
-3. Easy to update site-wide elements
-4. Child templates only define what's different
-
-=============================================================================
-#}
