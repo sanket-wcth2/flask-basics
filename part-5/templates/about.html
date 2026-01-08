@@ -28,7 +28,7 @@
             <span>{{ skill.level }}%</span>
         </div>
         <div class="skill-bar">
-            <div class="skill-progress" style="width: {{ skill.level }}%;"></div>
+            <div class="skill-progress" style="--level: {{ skill.level }}%;"></div>
         </div>
     </div>
     {% endfor %}
