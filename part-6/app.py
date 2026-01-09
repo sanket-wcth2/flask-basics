@@ -10,15 +10,14 @@ How to Run:
 """
 
 from flask import Flask, render_template, request, redirect, url_for
-from datetime import datetime
 
 app = Flask(__name__)
 
 # Sample data with due dates
 TASKS = [
-    {'id': 1, 'title': 'Learn Flask', 'status': 'In Progress', 'priority': 'High', 'due_date': '2024-12-31'},
-    {'id': 2, 'title': 'Build To-Do App', 'status': 'In Progress', 'priority': 'Medium', 'due_date': '2024-12-25'},
-    {'id': 3, 'title': 'Push to GitHub', 'status': 'Completed', 'priority': 'Medium', 'due_date': '2024-11-30'},
+    {'id': 1, 'title': 'Learn Flask', 'status': 'In Progress', 'priority': 'High', 'due_date': '2026-01-10'},
+    {'id': 2, 'title': 'Build To-Do App', 'status': 'In Progress', 'priority': 'Medium', 'due_date': '2026-01-12'},
+    {'id': 3, 'title': 'Push to GitHub', 'status': 'Completed', 'priority': 'Medium', 'due_date': '2026-01-14'},
 ]
 
 def get_next_id():
